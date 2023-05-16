@@ -5,17 +5,18 @@ function configureListeners() {
 
     for (var i = 0; i < images.length; i++) {        
         document.getElementById(images[i].id).addEventListener('mouseover', addOpacity)
-        document.getElementById(images[i].id).addEventListener('mouseout', removeOpacity);
+        document.getElementById(images[i].id).addEventListener('mouseout', removeOpacity, false);
         // iterate over images and add mouseover event listeners      
     } 
 }
 
 function addOpacity(event) {
     // add appropriate CSS class
-    this.classList.add('dim')
+    if (!this.classList.contains('dim')){
+        this.classList.add('dim')
     }
     getProductInfo(event.target.id);     
-
+}
 
 function removeOpacity(event) {
      //remove appropriate CSS class
